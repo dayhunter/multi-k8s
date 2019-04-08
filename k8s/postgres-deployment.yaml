@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      component: postgres
   template:
     metadata:
       labels:
-        app: postgres
+        component: postgres
     spec:
       volumes:
         - name: postgres-storage
