@@ -1,7 +1,10 @@
 FROM node:20-alpine AS builder
+
 WORKDIR /app
+
 COPY package.json package-lock.json* ./
 RUN npm ci && npm cache clean --force
+
 COPY . .
 RUN npm run build
 
@@ -14,7 +17,6 @@ EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# nginx runs as root to bind to ports, but worker processes run as non-root
 RUN chown -R appuser:appgroup /usr/share/nginx/html && \
     chown -R appuser:appgroup /var/cache/nginx && \
     chown -R appuser:appgroup /var/log/nginx && \
