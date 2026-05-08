@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: server-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      component: server
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              component: web
+      ports:
+        - protocol: TCP
+          port: 5000
+    # Allow ingress controller traffic
+    - from: []
+      ports:
+        - protocol: TCP
+          port: 5000

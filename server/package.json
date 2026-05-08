@@ -1,14 +1,18 @@
 {
+  "name": "multi-server",
+  "version": "1.0.0",
   "dependencies": {
-    "express": "4.16.3",
-    "pg": "7.4.3",
-    "redis": "2.8.0",
-    "cors": "2.8.4",
-    "nodemon": "1.18.3",
-    "body-parser": "*"
+    "express": "^4.21.0",
+    "pg": "^8.13.0",
+    "redis": "^4.7.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.3"
   },
   "scripts": {
     "dev": "nodemon",
     "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
